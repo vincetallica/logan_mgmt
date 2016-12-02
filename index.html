@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logan Regression Management</title>
+  <link href="js/c3-0.4.11/c3.css" rel="stylesheet" type="text/css">
+  <link href="js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <style>
+  table, th, td {
+      border: 1.5px solid black;
+      border-collapse: collapse;
+  }
+  th, td {
+      padding: 5px;
+  }
+  </style>
+</head>
+
+<body>
+
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script src="js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="js/c3-0.4.11/c3.js"></script>
+
+<h1 align="center">Regression Results</h1>
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+   <li class="active"><a class="regress_rate_tab" href="#regress_rate_tab" data-toggle="tab">Regression Rates</a></li>
+   <li><a class="code_cov_tab" href="#code_cov_tab" data-toggle="tab">Code Coverage</a></li>
+   <li><a class="func_cov_tab" href="#func_cov_tab" data-toggle="tab">Functional Coverage</a></li>
+  </ul>
+
+  <div id="chart"></div>
+
+  <div class="tab-content">
+     <div class="tab-pane active" id="regress_rate_tab"></div>
+     <div class="tab-pane" id="code_cov_tab"></div>
+     <div class="tab-pane" id="func_cov_tab"></div>
+  </div>
+</div>
+
+  <script>
+   $.ajaxSetup ({
+     // Disable caching of AJAX responses
+     // Used when debugging
+     cache: false
+   });
+   
+   //$("#regress_rate_tab").load("include/regress.php");
+   $("#regress_rate_tab").load("include/regress_table.html");
+   
+   $(".regress_rate_tab").click(function() {
+     $("#regress_rate_tab").load("include/regress_table.html");
+   })
+    $(".code_cov_tab").click(function() {
+      $("#code_cov_tab").load("include/code_cov_table.html");
+    })
+    $(".func_cov_tab").click(function() {
+      $("#func_cov_tab").load("include/functional_table.html");    
+    })
+  </script>
+
+</body>
+</html>
